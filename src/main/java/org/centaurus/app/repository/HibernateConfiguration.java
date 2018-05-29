@@ -25,9 +25,10 @@ public class HibernateConfiguration {
     private Configuration configure() {
         Configuration configuration = new Configuration();
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect")
-                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
-                .setProperty("hibernate.connection.url", "jdbc:mysql://127.0.0.1:3306/app")
-                .setProperty("hibernate.connection.username", "root")
+                .setProperty("hibernate.connection.driver_class", "org.h2.Driver")
+                .setProperty("hibernate.connection.url", "jdbc:h2:./GLOBALS;INIT=CREATE SCHEMA IF NOT EXISTS GLOBALS")
+                .setProperty("hibernate.default_schema", "GLOBALS")
+                .setProperty("hibernate.connection.username", "sa")
                 .setProperty("hibernate.connection.password", "")
                 .setProperty("hibernate.hbm2ddl.auto", "update")
                 .addAnnotatedClass(User.class);
